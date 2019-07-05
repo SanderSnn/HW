@@ -1,0 +1,85 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class HW8Exe1 {
+    public static void main(String[] args) {
+        new HW8Exe1().Start();
+    }
+
+    private void Start() {
+        Scanner in = new Scanner(System.in);
+        String s;
+        char choice;
+        do {
+            System.out.println();
+            System.out.println("Задания:");
+            System.out.println("    1. Неверные символы в числовом поле ввода");
+            System.out.println("    2. Обработка попытки извлечения корня из отрицательного числа");
+            System.out.println("    3. Неверное значение в поле ввода даты");
+            System.out.println("    4. Номера групп в порядке убывания средней успеваемости их студентов");
+            System.out.println("    q. Выйти из программы");
+            System.out.print("Выберите нужное: ");
+            s = in.next();
+            choice = s.charAt(0);
+            whatToDo(choice);
+        } while (choice != 'q');
+    }
+
+    private void whatToDo(char choice) {
+        Scanner in = new Scanner(System.in);
+        switch (choice) {
+            case '1':
+                System.out.println(func(in));
+                break;
+            case '2':
+                System.out.println(funcSquare(in));
+                break;
+            case '3':
+                System.out.println(funcDate(in));
+                break;
+            case '4':
+                break;
+            case 'q':
+                System.out.println("Программа завершена");
+                break;
+            default:
+                System.out.println("Выбор сделан неверно!");
+                break;
+        }
+    }
+
+    private String func(Scanner in) {
+        System.out.println("Введите число: ");
+        try {
+            int x = in.nextInt();
+        } catch (InputMismatchException e) {
+            return "Число введено неправильно!";
+        }
+        return "Число введено правильно";
+    }
+
+    private double funcSquare(Scanner in) throws ArithmeticException {
+        System.out.println("Введите число: ");
+        int x = in.nextInt();
+        if (x < 0) {
+            throw new ArithmeticException("Нельзя вычислить корень отрицательного числа");
+        }
+        return Math.sqrt(x);
+    }
+
+    private String funcDate(Scanner in) {
+        System.out.println("Введите дату в формате dd.MM.yyyy: ");
+        String dt = in.next();
+        SimpleDateFormat s = new SimpleDateFormat("dd.MM.yyyy");
+        Date date;
+        try {
+            date = s.parse(dt);
+        } catch (ParseException e) {
+            return "Дата введено неправильно!";
+        }
+        return "Вы ввели следующую дату: " + date;
+    }
+}
