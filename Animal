@@ -61,7 +61,7 @@ class Dog extends Animal {
     }
 
 }
-
+//1
 class AnimalInfo {
     public static void main(String[] args) {
         Cat cat = new Cat("Пёс", 5);
