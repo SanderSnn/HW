@@ -1,4 +1,10 @@
-class Animal {
+interface HomeAnimal {
+    String getVoice();
+    String getName();
+    int getAge();
+}
+
+    abstract class Animal {
     String name;
     int age;
 
@@ -8,20 +14,20 @@ class Animal {
     }
 }
 
-class Cat extends Animal {
+class Cat extends Animal implements HomeAnimal {
     Cat(String name, int age) {
         super(name, age);
     }
-
-    String getVoice() {
+    @Override
+    public String getVoice() {
         return "Мяу";
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
     }
 
-    int getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -35,20 +41,23 @@ class Cat extends Animal {
 
 }
 
-class Dog extends Animal {
+class Dog extends Animal implements HomeAnimal{
     Dog(String name, int age) {
         super(name, age);
     }
 
-    String getVoice() {
+    @Override
+    public String getVoice() {
         return "Гав-гав";
     }
 
-    String getName() {
+    @Override
+    public String getName() {
         return name;
     }
 
-    int getAge() {
+    @Override
+    public int getAge() {
         return age;
     }
 
@@ -61,11 +70,11 @@ class Dog extends Animal {
     }
 
 }
-//1
+
 class AnimalInfo {
     public static void main(String[] args) {
-        Cat cat = new Cat("Пёс", 5);
-        Dog dog = new Dog("Бим", 10);
+        HomeAnimal cat = new Cat("Пёс", 5);
+        HomeAnimal dog = new Dog("Бим", 10);
         System.out.println("Имя кота: " + cat.getName() + "; Возраст: " + cat.getAge());
         System.out.println("Кот говорит: " + cat.getVoice());
         System.out.println("Имя собаки: " + dog.getName() + "; Возраст: " + dog.getAge());
