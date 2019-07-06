@@ -1,10 +1,12 @@
 interface HomeAnimal {
     String getVoice();
+
     String getName();
+
     int getAge();
 }
 
-    abstract class Animal {
+abstract class Animal {
     String name;
     int age;
 
@@ -18,6 +20,7 @@ class Cat extends Animal implements HomeAnimal {
     Cat(String name, int age) {
         super(name, age);
     }
+
     @Override
     public String getVoice() {
         return "Мяу";
@@ -41,7 +44,7 @@ class Cat extends Animal implements HomeAnimal {
 
 }
 
-class Dog extends Animal implements HomeAnimal{
+class Dog extends Animal implements HomeAnimal {
     Dog(String name, int age) {
         super(name, age);
     }
