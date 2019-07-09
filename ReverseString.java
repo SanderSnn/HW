@@ -1,7 +1,7 @@
 public class ReverseString {
     public static void main(String[] args) {
         String s = "Это проверка";
-            reverse(s, s.length()-1);
+        reverse(s, s.length()-1);
     }
     private static void reverse(String s, int index){ // Рекурсивный метод
         if(index ==0){
