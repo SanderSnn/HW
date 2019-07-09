@@ -21,8 +21,15 @@ public class Fibonacci {
             k++;
         }
     }
-
-    private static long fibonacciNum(int num) {
+    private static long fibonacciNum(int num){  // Рекурсивный метод
+        if (num == 0) {
+            return 0;
+        } else if (num == 1 || num == 2) {
+            return 1;
+        }
+        return fibonacciNum(num-1) + fibonacciNum(num-2);
+    }
+    private static long fibonacciNum2(int num) {  //Обычный метод
         if (num == 0) {
             return 0;
         } else if (num == 1 || num == 2) {

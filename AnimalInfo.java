@@ -1,29 +1,17 @@
 interface HomeAnimal {
-    String getVoice();
 
     String getName();
 
     int getAge();
 }
 
-abstract class Animal {
-    String name;
-    int age;
+abstract class Animal implements HomeAnimal{
+    private String name;
+    private int age;
 
     Animal(String name, int age) {
         this.name = name;
         this.age = age;
-    }
-}
-
-class Cat extends Animal implements HomeAnimal {
-    Cat(String name, int age) {
-        super(name, age);
-    }
-
-    @Override
-    public String getVoice() {
-        return "Мяу";
     }
 
     public String getName() {
@@ -41,43 +29,34 @@ class Cat extends Animal implements HomeAnimal {
     void setAge(int age) {
         this.age = age;
     }
+}
+
+class Cat extends Animal {
+    Cat(String name, int age) {
+        super(name, age);
+    }
+
+    String getVoice() {
+        return "Мяу";
+    }
 
 }
 
-class Dog extends Animal implements HomeAnimal {
+class Dog extends Animal {
     Dog(String name, int age) {
         super(name, age);
     }
 
-    @Override
-    public String getVoice() {
+    String getVoice() {
         return "Гав-гав";
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int getAge() {
-        return age;
-    }
-
-    void setName(String name) {
-        this.name = name;
-    }
-
-    void setAge(int age) {
-        this.age = age;
     }
 
 }
 
 class AnimalInfo {
     public static void main(String[] args) {
-        HomeAnimal cat = new Cat("Пёс", 5);
-        HomeAnimal dog = new Dog("Бим", 10);
+        Cat cat = new Cat("Пёс", 5);
+        Dog dog = new Dog("Бим", 10);
         System.out.println("Имя кота: " + cat.getName() + "; Возраст: " + cat.getAge());
         System.out.println("Кот говорит: " + cat.getVoice());
         System.out.println("Имя собаки: " + dog.getName() + "; Возраст: " + dog.getAge());
